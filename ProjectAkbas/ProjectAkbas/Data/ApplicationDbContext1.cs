@@ -34,7 +34,7 @@ namespace ProjectAkbas.Data
             // SapGuncelStokVerileri konfigürasyonu
             modelBuilder.Entity<mSapGuncelStokVerileri>()
                 .ToTable("SapGuncelStokVerileri")
-              .HasKey(sg => sg.Kumas);
+              .HasNoKey();
         }
     }
 }

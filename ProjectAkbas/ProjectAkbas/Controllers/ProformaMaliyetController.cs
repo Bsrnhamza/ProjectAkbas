@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectAkbas.Data;
 using ProjectAkbas.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 public class ProformaMaliyetController : Controller
 {
@@ -17,37 +19,44 @@ public class ProformaMaliyetController : Controller
     }
     public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 150)
     {
-
         // Proforma Maliyetler verisini çek
         var proformaMaliyetler = await _context2.ProformaMaliyetler
-        .OrderBy(p => p.IDD)
-        .Skip((pageNumber - 1) * pageSize)
-        .Take(pageSize)
-          .AsNoTracking()
-        .ToListAsync();
+            .OrderBy(p => p.IDD)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .AsNoTracking()
+            .ToListAsync();
 
         // Kumas Kodlarını listele ve temizle
         var kumasKodlari = proformaMaliyetler
             .Select(p => p.KumasKodu.Trim()) // Trim boşlukları temizler
             .ToList();
 
-        // Paralel veri çekme işlemleri
-        var maraDataTask = _context3.Maras
-            .Where(m => kumasKodlari.Contains(m.MATNR.Trim())) // Trim boşlukları temizler
+        // Verileri sıralı bir şekilde çek
+        var maraData = await _context3.Maras
+            .Where(m => kumasKodlari.Contains(m.MATNR.Trim()))
             .ToListAsync();
 
-        var sapIthalatVerileriTask = _context1.SapIthalatVerileri
-            .Where(si => kumasKodlari.Contains(si.Kumas.Trim())) // Trim boşlukları temizler
+        var sapIthalatVerileri = await _context1.SapIthalatVerileri
+            .Where(si => kumasKodlari.Contains(si.Kumas.Trim()))
             .ToListAsync();
 
-        // Tüm paralel veri çekme işlemlerini bekle
-        var maraData = await maraDataTask;
-        var sapIthalatVerileri = await sapIthalatVerileriTask;
+        var sapGuncelStokVerileri = await _context1.SapGuncelStokVerileri
+            .Where(sg => kumasKodlari.Contains(sg.Kumas.Trim()))
+            .ToListAsync();
 
+        // Tekrar eden anahtarları kontrol et
+        var sapGuncelStokVerileriDict = sapGuncelStokVerileri
+            .GroupBy(sg => sg.Kumas.Trim())
+            .ToDictionary(g => g.Key, g => g.First());
 
-        // Verileri bir sözlükte topla
-        var maraDataDict = maraData.ToDictionary(m => m.MATNR.Trim()); // Trim boşlukları temizler
-        var sapIthalatVerileriDict = sapIthalatVerileri.ToDictionary(si => si.Kumas.Trim()); // Trim boşlukları temizler
+        var maraDataDict = maraData
+            .GroupBy(m => m.MATNR.Trim())
+            .ToDictionary(g => g.Key, g => g.First());
+
+        var sapIthalatVerileriDict = sapIthalatVerileri
+            .GroupBy(si => si.Kumas.Trim())
+            .ToDictionary(g => g.Key, g => g.First());
 
         // ProformaMaliyetDto oluştur
         var proformaMaliyetDtos = proformaMaliyetler.Select(p => new ProformaMaliyetDto
@@ -63,11 +72,12 @@ public class ProformaMaliyetController : Controller
             YurtDisiDolarMetre = p.YurtDisiDolarMetre,
             YurticiDolarMetre = p.YurticiDolarMetre,
             ProfSFYurtici = p.ProfSFYurtici,
+            ProfSFYurtdisiIng = p.ProfSFYurtdisiIng,
             Islem = p.Islem,
 
             Sipariste = sapIthalatVerileriDict.TryGetValue(p.KumasKodu.Trim(), out var si) ? si.Sipariste : null,
             Antrepoda = sapIthalatVerileriDict.TryGetValue(p.KumasKodu.Trim(), out si) ? si.Antrepoda : null,
-
+            StokMiktarı = sapGuncelStokVerileriDict.TryGetValue(p.KumasKodu.Trim(), out var sg) ? sg.StokMiktarı : null,
 
             ZKOMP_ORM1 = maraDataDict.TryGetValue(p.KumasKodu.Trim(), out var m) ? m.ZKOMP_ORM1 : null,
             ZKOMP_ORM_ORAN1 = maraDataDict.TryGetValue(p.KumasKodu.Trim(), out m) ? m.ZKOMP_ORM_ORAN1 : null,

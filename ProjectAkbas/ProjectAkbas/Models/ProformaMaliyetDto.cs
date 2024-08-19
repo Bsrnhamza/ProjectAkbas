@@ -34,7 +34,9 @@ namespace ProjectAkbas.Models
         public decimal? Sipariste { get; set; }
         public decimal? Antrepoda { get; set; }
         public decimal? YurticiDolarMetre { get; set; }
-        public decimal LABST { get; set; }
+        public decimal? LABST { get; set; }
+        public decimal? ProfSFYurtdisiIng { get; set; }
+   
 
     }
 }

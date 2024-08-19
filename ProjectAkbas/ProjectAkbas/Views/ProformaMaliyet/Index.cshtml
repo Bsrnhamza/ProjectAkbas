@@ -3,19 +3,20 @@
 
 <link href="~/css/bootstrap.css" rel="stylesheet">
 <style>
-    .table-responsive {
-        overflow-x: auto;
-    }
-
     .table {
         margin: 0;
         width: 100%;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
     }
 
     .container {
         padding: 0;
         width: 100%;
         max-width: 100%;
+        z-index: 1;
     }
 
     .pagination {
@@ -25,22 +26,38 @@
     th, td {
         text-align: center;
         vertical-align: middle;
+        padding: 8px; /* Padding ekleyerek içeriği rahatça görebilirsiniz */
     }
 
     th {
-        background-color: #f8f9fa;
+        background-color: #ffffff; /* Beyaz arka plan rengi */
+        position: sticky;
+        top: 50px; /* Navbar yüksekliği kadar boşluk bırakın */
+        z-index: 10; /* Üzerinde diğer içerikler */
+        border-bottom: 2px solid #dee2e6; /* Başlıkların altına hafif bir sınır ekleyin */
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
     }
 
+    /* İkinci başlık grubunun arka plan rengi */
     .header-group {
-        background-color: #e9ecef;
+        background-color: #e9ecef; /* Daha açık gri arka plan rengi */
+        position: sticky;
+        top: 90px; /* İlk başlık grubunun yüksekliğine ve navbar yüksekliğine göre ayarlayın */
+        z-index: 9; /* Birinci başlık grubunun altında */
+        border-bottom: 2px solid #dee2e6; /* Başlıkların altına hafif bir sınır ekleyin */
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    }
+
+    /* Alternatif stil tanımları (Opsiyonel) */
+    .table th, .table td {
+        background-color: #fff; /* Başlık arka planı beyaz */
     }
 </style>
-
 <table class="table table-hover">
     <thead>
         <tr>
-            <th rowspan="2">ID</th>
             <th rowspan="2">Mal Grubu</th>
+            <th rowspan="2">ID</th>
             <th rowspan="2">Sıra Benzer Kumaş</th>
             <th rowspan="2">Kumaş Kodu</th>
             <th rowspan="2">Kumaş Kalitesi</th>
@@ -50,30 +67,43 @@
             <th rowspan="2">GRM</th>
             <th rowspan="2">DokumaOrme</th>
             <th rowspan="2">StokMiktarı</th>
-            <th colspan="3" class="header-group">COST DOMESTIC</th>
-            <th colspan="3" class="header-group">DOMESTIC PRICE</th>
+            <th colspan="3">Domestic Price</th>
+            <th colspan="3">Export Price</th>
+            <th colspan="3">Cost Domestic</th>
+            <th colspan="3">Cost Export</th>
             <th rowspan="2">Qualities</th>
             <th rowspan="2">Siparişte</th>
             <th rowspan="2">Zgroup</th>
             <th rowspan="2">Antrepoda</th>
+            <th rowspan="2">LABST</th>
         </tr>
         <tr>
-            <th>DYEING</th>
-            <th>ROTARY</th>
-            <th>DIGITAL</th>
-            <th>DYEING</th>
-            <th>ROTARY</th>
-            <th>DIGITAL</th>
+            <th class="header-group">DYEING</th>
+            <th class="header-group">ROTARY</th>
+            <th class="header-group">DIGITAL</th>
+
+            <th class="header-group">DYEING</th>
+            <th class="header-group">ROTARY</th>
+            <th class="header-group">DIGITAL</th>
+
+            <th class="header-group">DYEING</th>
+            <th class="header-group">ROTARY</th>
+            <th class="header-group">DIGITAL</th>
+
+            <th class="header-group">DYEING</th>
+            <th class="header-group">ROTARY</th>
+            <th class="header-group">DIGITAL</th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var group in Model.ProformaMaliyetler.GroupBy(p => p.KumasKodu))
         {
             var firstItem = group.First();
 
             <tr>
-                <td>@firstItem.IDD</td>
                 <td>@firstItem.MalGrubu</td>
+                <td>@firstItem.IDD</td>
                 <td>@firstItem.SiraBenzerKumas</td>
                 <td>@firstItem.KumasKodu</td>
                 <td>@firstItem.KumasKalitesi</td>
@@ -124,7 +154,34 @@
                 <td>@firstItem.ZMML_GRM</td>
                 <td>@firstItem.DokumaOrme</td>
                 <td>@firstItem.StokMiktarı</td>
-                
+
+                <td>
+                    @foreach (var item in group)
+                    {
+                        if (item.Islem == "Düz Boya")
+                        {
+                            <div>@item.YurticiDolarMetre</div>
+                        }
+                    }
+                </td>
+                <td>
+                    @foreach (var item in group)
+                    {
+                        if (item.Islem == "Baskı")
+                        {
+                            <div>@item.YurticiDolarMetre</div>
+                        }
+                    }
+                </td>
+                <td>
+                    @foreach (var item in group)
+                    {
+                        if (item.Islem == "Dijital Baskı")
+                        {
+                            <div>@item.YurticiDolarMetre</div>
+                        }
+                    }
+                </td>
 
                 <td>
                     @foreach (var item in group)
@@ -153,13 +210,12 @@
                         }
                     }
                 </td>
-
                 <td>
                     @foreach (var item in group)
                     {
                         if (item.Islem == "Düz Boya")
                         {
-                            <div>@item.YurticiDolarMetre</div>
+                            <div>@item.ProfSFYurtici</div>
                         }
                     }
                 </td>
@@ -168,7 +224,7 @@
                     {
                         if (item.Islem == "Baskı")
                         {
-                            <div>@item.YurticiDolarMetre</div>
+                            <div>@item.ProfSFYurtici</div>
                         }
                     }
                 </td>
@@ -177,7 +233,34 @@
                     {
                         if (item.Islem == "Dijital Baskı")
                         {
-                            <div>@item.YurticiDolarMetre</div>
+                            <div>@item.ProfSFYurtici</div>
+                        }
+                    }
+                </td>
+                <td>
+                    @foreach (var item in group)
+                    {
+                        if (item.Islem == "Düz Boya")
+                        {
+                            <div>@item.ProfSFYurtdisiIng</div>
+                        }
+                    }
+                </td>
+                <td>
+                    @foreach (var item in group)
+                    {
+                        if (item.Islem == "Baskı")
+                        {
+                            <div>@item.ProfSFYurtdisiIng</div>
+                        }
+                    }
+                </td>
+                <td>
+                    @foreach (var item in group)
+                    {
+                        if (item.Islem == "Dijital Baskı")
+                        {
+                            <div>@item.ProfSFYurtdisiIng</div>
                         }
                     }
                 </td>
@@ -186,6 +269,7 @@
                 <td>@firstItem.Sipariste</td>
                 <td>@firstItem.ZGRUP</td>
                 <td>@firstItem.Antrepoda</td>
+                <td>@firstItem.LABST</td>
             </tr>
         }
     </tbody>

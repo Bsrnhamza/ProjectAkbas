@@ -24,8 +24,8 @@ namespace ProjectAkbas.Data
             });
             modelBuilder.Entity<mMard>(entity =>
             {
-                entity.HasNoKey(); // Keyless (anahtarsız) olarak işaretleyin
-                entity.ToTable("MARD", "aep");
+                entity.HasNoKey()// Keyless (anahtarsız) olarak işaretleyin
+               .HasKey(md => md.mardMATNR); 
             });
         }
     }

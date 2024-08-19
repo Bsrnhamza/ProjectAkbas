@@ -3601,11 +3601,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas.csproj",
+      "projectUniqueName": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas.csproj",
       "projectName": "ProjectAkbas",
-      "projectPath": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas.csproj",
+      "projectPath": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\obj\\",
+      "outputPath": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",

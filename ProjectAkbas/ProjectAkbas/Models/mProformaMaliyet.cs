@@ -118,8 +118,8 @@ namespace ProjectAkbas.Models
         public decimal? ProfSFYurtdisiHAlt { get; set; }
         public decimal? ProfSFYurtdisiHDip { get; set; }
         public decimal? ProfSFYurtdisiHUst { get; set; }
-        public decimal? ProfSFYurtdisiIng { get; set; }
-        public decimal? ProfSFYurtici { get; set; }
+        public decimal? ProfSFYurtdisiIng { get; set; }//...
+        public decimal? ProfSFYurtici { get; set; }//domestic price
         public decimal? ProfSFYurticiIst { get; set; }
         public decimal? ProfSFYurticiKonf { get; set; }
         public string? Proses1 { get; set; }
@@ -297,7 +297,7 @@ namespace ProjectAkbas.Models
         public string? TalepEden { get; set; }
         public string? VarisYeri { get; set; }
         public string? YarnDyed { get; set; }
-        public decimal? YurtDisiDolarMetre { get; set; }
+        public decimal? YurtDisiDolarMetre { get; set; }//cost domestic 
         public decimal? YurtdisiKomisyon { get; set; }
         public decimal? YurtdisiNakliyeNavlun { get; set; }
         public decimal? YurticiDolarMetre { get; set; }
