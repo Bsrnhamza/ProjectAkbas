@@ -4,54 +4,65 @@
 <link href="~/css/bootstrap.css" rel="stylesheet">
 <style>
     .table {
-        margin: 0;
-        width: 100%;
-    }
+    margin: 0;
+    width: 100%;
+}
 
-    .table-responsive {
-        overflow-x: auto;
-    }
+.table-responsive {
+    overflow-x: auto;
+}
 
-    .container {
-        padding: 0;
-        width: 100%;
-        max-width: 100%;
-        z-index: 1;
-    }
+.container {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    z-index: 1;
+}
 
-    .pagination {
-        margin: 0;
-    }
+.pagination {
+    margin: 0;
+}
 
-    th, td {
-        text-align: center;
-        vertical-align: middle;
-        padding: 8px; /* Padding ekleyerek içeriği rahatça görebilirsiniz */
-    }
+th, td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+}
 
     th {
-        background-color: #ffffff; /* Beyaz arka plan rengi */
+        background-color: #ffffff;
         position: sticky;
-        top: 50px; /* Navbar yüksekliği kadar boşluk bırakın */
-        z-index: 10; /* Üzerinde diğer içerikler */
-        border-bottom: 2px solid #dee2e6; /* Başlıkların altına hafif bir sınır ekleyin */
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+        top: 55px; /* Increase this value to move the header down */
+        z-index: 10;
+        border-bottom: 2px solid #dee2e6;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
-    /* İkinci başlık grubunun arka plan rengi */
     .header-group {
-        background-color: #e9ecef; /* Daha açık gri arka plan rengi */
+        background-color: #e9ecef;
         position: sticky;
-        top: 90px; /* İlk başlık grubunun yüksekliğine ve navbar yüksekliğine göre ayarlayın */
-        z-index: 9; /* Birinci başlık grubunun altında */
-        border-bottom: 2px solid #dee2e6; /* Başlıkların altına hafif bir sınır ekleyin */
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+        top: 110px; /* Increase this value to move the header group down */
+        z-index: 9;
+        border-bottom: 2px solid #dee2e6;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
-    /* Alternatif stil tanımları (Opsiyonel) */
-    .table th, .table td {
-        background-color: #fff; /* Başlık arka planı beyaz */
-    }
+.table th, .table td {
+    background-color: #fff;
+}
+
+.qualities-m {
+    background-color: rgba(173, 216, 230, 0.25);
+}
+
+.qualities-a {
+    background-color: rgba(255, 255, 224, 0.25);
+}
+
+.qualities-n {
+    background-color: rgba(144, 238, 144, 0.25);
+}
+
 </style>
 <table class="table table-hover">
     <thead>
@@ -78,21 +89,14 @@
             <th rowspan="2">LABST</th>
         </tr>
         <tr>
-            <th class="header-group">DYEING</th>
-            <th class="header-group">ROTARY</th>
-            <th class="header-group">DIGITAL</th>
-
-            <th class="header-group">DYEING</th>
-            <th class="header-group">ROTARY</th>
-            <th class="header-group">DIGITAL</th>
-
-            <th class="header-group">DYEING</th>
-            <th class="header-group">ROTARY</th>
-            <th class="header-group">DIGITAL</th>
-
-            <th class="header-group">DYEING</th>
-            <th class="header-group">ROTARY</th>
-            <th class="header-group">DIGITAL</th>
+            @foreach (var header in new[] { "DYEING", "ROTARY", "DIGITAL" })
+            {
+                <th class="header-group">@header</th>
+                <th class="header-group">@header</th>
+                <th class="header-group">@header</th>
+                <th class="header-group">@header</th>
+               
+            }
         </tr>
     </thead>
 
@@ -100,176 +104,69 @@
         @foreach (var group in Model.ProformaMaliyetler.GroupBy(p => p.KumasKodu))
         {
             var firstItem = group.First();
+            var malGrubuColor = GetMalGrubuColor(firstItem.MalGrubu);
+            var qualitiesColor = GetQualitiesColor(firstItem.Qualities);
 
             <tr>
-                <td>@firstItem.MalGrubu</td>
-                <td>@firstItem.IDD</td>
-                <td>@firstItem.SiraBenzerKumas</td>
-                <td>@firstItem.KumasKodu</td>
-                <td>@firstItem.KumasKalitesi</td>
-                <td>@firstItem.HamKumasFiyatiMt</td>
-                <td>
-                    @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM1) && firstItem.ZKOMP_ORM1 != "0" && firstItem.ZKOMP_ORM1 != "000")
-                    {
-                        @firstItem.ZKOMP_ORM1
-                        @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM_ORAN1) && firstItem.ZKOMP_ORM_ORAN1 != "0" && firstItem.ZKOMP_ORM_ORAN1 != "000")
-                        {
-                            @($"%{int.Parse(firstItem.ZKOMP_ORM_ORAN1)}")
-                        }
-                    }
-                    @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM2) && firstItem.ZKOMP_ORM2 != "0" && firstItem.ZKOMP_ORM2 != "000")
-                    {
-                        @firstItem.ZKOMP_ORM2
-                        @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM_ORAN2) && firstItem.ZKOMP_ORM_ORAN2 != "0" && firstItem.ZKOMP_ORM_ORAN2 != "000")
-                        {
-                            @($"%{int.Parse(firstItem.ZKOMP_ORM_ORAN2)}")
-                        }
-                    }
-                    @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM3) && firstItem.ZKOMP_ORM3 != "0" && firstItem.ZKOMP_ORM3 != "000")
-                    {
-                        @firstItem.ZKOMP_ORM3
-                        @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM_ORAN3) && firstItem.ZKOMP_ORM_ORAN3 != "0" && firstItem.ZKOMP_ORM_ORAN3 != "000")
-                        {
-                            @($"%{int.Parse(firstItem.ZKOMP_ORM_ORAN3)}")
-                        }
-                    }
-                    @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM4) && firstItem.ZKOMP_ORM4 != "0" && firstItem.ZKOMP_ORM4 != "000")
-                    {
-                        @firstItem.ZKOMP_ORM4
-                        @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM_ORAN4) && firstItem.ZKOMP_ORM_ORAN4 != "0" && firstItem.ZKOMP_ORM_ORAN4 != "000")
-                        {
-                            @($"%{int.Parse(firstItem.ZKOMP_ORM_ORAN4)}")
-                        }
-                    }
-                    @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM5) && firstItem.ZKOMP_ORM5 != "0" && firstItem.ZKOMP_ORM5 != "000")
-                    {
-                        @firstItem.ZKOMP_ORM5
-                        @if (!string.IsNullOrWhiteSpace(firstItem.ZKOMP_ORM_ORAN5) && firstItem.ZKOMP_ORM_ORAN5 != "0" && firstItem.ZKOMP_ORM_ORAN5 != "000")
-                        {
-                            @($"%{int.Parse(firstItem.ZKOMP_ORM_ORAN5)}")
-                        }
-                    }
+                <td style="background-color: @malGrubuColor;">@firstItem.MalGrubu</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.IDD</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.SiraBenzerKumas</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.KumasKodu</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.KumasKalitesi</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.HamKumasFiyatiMt</td>
+                <td style="background-color: @qualitiesColor;">
+                    @Html.Raw(GetKompOrmText(firstItem))
                 </td>
-                <td>@firstItem.ZMML_EN</td>
-                <td>@firstItem.ZMML_GRM</td>
-                <td>@firstItem.DokumaOrme</td>
-                <td>@firstItem.StokMiktarı</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.ZMML_EN</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.ZMML_GRM</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.DokumaOrme</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.StokMiktarı</td>
 
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Düz Boya")
+                @foreach (var priceType in new[] { "Düz Boya", "Baskı", "Dijital Baskı" })
+                {
+                    <td style="background-color: @qualitiesColor;">
+                        @foreach (var item in group.Where(i => i.Islem == priceType))
                         {
                             <div>@item.YurticiDolarMetre</div>
                         }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Baskı")
-                        {
-                            <div>@item.YurticiDolarMetre</div>
-                        }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Dijital Baskı")
-                        {
-                            <div>@item.YurticiDolarMetre</div>
-                        }
-                    }
-                </td>
+                    </td>
+                }
 
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Düz Boya")
+                @foreach (var priceType in new[] { "Düz Boya", "Baskı", "Dijital Baskı" })
+                {
+                    <td style="background-color: @qualitiesColor;">
+                        @foreach (var item in group.Where(i => i.Islem == priceType))
                         {
                             <div>@item.YurtDisiDolarMetre</div>
                         }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Baskı")
-                        {
-                            <div>@item.YurtDisiDolarMetre</div>
-                        }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Dijital Baskı")
-                        {
-                            <div>@item.YurtDisiDolarMetre</div>
-                        }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Düz Boya")
-                        {
-                            <div>@item.ProfSFYurtici</div>
-                        }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Baskı")
-                        {
-                            <div>@item.ProfSFYurtici</div>
-                        }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Dijital Baskı")
-                        {
-                            <div>@item.ProfSFYurtici</div>
-                        }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Düz Boya")
-                        {
-                            <div>@item.ProfSFYurtdisiIng</div>
-                        }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Baskı")
-                        {
-                            <div>@item.ProfSFYurtdisiIng</div>
-                        }
-                    }
-                </td>
-                <td>
-                    @foreach (var item in group)
-                    {
-                        if (item.Islem == "Dijital Baskı")
-                        {
-                            <div>@item.ProfSFYurtdisiIng</div>
-                        }
-                    }
-                </td>
+                    </td>
+                }
 
-                <td>@firstItem.Qualities</td>
-                <td>@firstItem.Sipariste</td>
-                <td>@firstItem.ZGRUP</td>
-                <td>@firstItem.Antrepoda</td>
-                <td>@firstItem.LABST</td>
+                @foreach (var costType in new[] { "Düz Boya", "Baskı", "Dijital Baskı" })
+                {
+                    <td style="background-color: @qualitiesColor;">
+                        @foreach (var item in group.Where(i => i.Islem == costType))
+                        {
+                            <div>@item.ProfSFYurtici</div>
+                        }
+                    </td>
+                }
+
+                @foreach (var costType in new[] { "Düz Boya", "Baskı", "Dijital Baskı" })
+                {
+                    <td style="background-color: @qualitiesColor;">
+                        @foreach (var item in group.Where(i => i.Islem == costType))
+                        {
+                            <div>@item.ProfSFYurtdisiIng</div>
+                        }
+                    </td>
+                }
+
+                <td style="background-color: @qualitiesColor;">@firstItem.Qualities</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.Sipariste</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.ZGRUP</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.Antrepoda</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.LABST</td>
             </tr>
         }
     </tbody>
@@ -277,20 +174,97 @@
 
 <div class="d-flex justify-content-center mt-4">
     <ul class="pagination">
-        <li class="page-item @(Model.PagingInfo.CurrentPage == 1 ? "disabled" : "")">
-            <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.CurrentPage - 1 })">Previous</a>
-        </li>
-        @for (int i = 1; i <= Model.PagingInfo.TotalPages; i++)
+        @* Links to the first few pages *@
+        @if (Model.PagingInfo.CurrentPage > 4)
         {
-            if (i >= Model.PagingInfo.CurrentPage - 2 && i <= Model.PagingInfo.CurrentPage + 2)
-            {
-                <li class="page-item @(Model.PagingInfo.CurrentPage == i ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("Index", new { pageNumber = i })">@i</a>
-                </li>
-            }
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = 1 })">1</a>
+            </li>
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
         }
-        <li class="page-item @(Model.PagingInfo.CurrentPage == Model.PagingInfo.TotalPages ? "disabled" : "")">
-            <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.CurrentPage + 1 })">Next</a>
-        </li>
+
+        @for (int i = Math.Max(1, Model.PagingInfo.CurrentPage - 2); i <= Math.Min(Model.PagingInfo.TotalPages, Model.PagingInfo.CurrentPage + 2); i++)
+        {
+            <li class="page-item @(Model.PagingInfo.CurrentPage == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = i })">@i</a>
+            </li>
+        }
+
+        @if (Model.PagingInfo.CurrentPage < Model.PagingInfo.TotalPages - 3)
+        {
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.TotalPages })">@Model.PagingInfo.TotalPages</a>
+            </li>
+        }
     </ul>
 </div>
+
+
+@functions {
+    private string GetMalGrubuColor(string malGrubu)
+    {
+        return malGrubu switch
+        {
+            "Viscose" => "rgba(255, 165, 0, 0.5)",
+            "Rayon" or "Ryn Signart" => "rgba(0, 128, 0, 0.5)",
+            "Cotton" => "rgba(128, 0, 128, 0.5)",
+            "Nylon" => "rgba(255, 255, 0, 0.5)",
+            "Polyester" or "Pes Double" => "rgba(255, 0, 0, 0.5)",
+            "Tencel" or "Modal" => "rgba(0, 0, 255, 0.5)",
+            "Linen" => "rgba(173, 216, 230, 0.5)",
+            "Jacquard" => "rgba(128, 128, 128, 0.5)",
+            "Mix" or "Yarn Dyed" => "rgba(211, 211, 211, 0.5)",
+            _ => "transparent"
+        };
+    }
+
+    private string GetQualitiesColor(string qualities)
+    {
+        return qualities switch
+        {
+            "M" => "rgba(173, 216, 230, 0.25)",
+            "A" or "S" => "rgba(255, 255, 224, 0.25)",
+            "N" => "rgba(144, 238, 144, 0.25)",
+            _ => "transparent"
+        };
+    }
+
+    private string GetKompOrmText(ProformaMaliyetDto item)
+    {
+        var result = new List<string>();
+
+        var kompOrms = new[]
+        {
+            item.ZKOMP_ORM1,
+            item.ZKOMP_ORM2,
+            item.ZKOMP_ORM3,
+            item.ZKOMP_ORM4,
+            item.ZKOMP_ORM5
+    };
+        var kompOrmsOran = new[]
+        {
+            item.ZKOMP_ORM_ORAN1,
+            item.ZKOMP_ORM_ORAN2,
+            item.ZKOMP_ORM_ORAN3,
+            item.ZKOMP_ORM_ORAN4,
+            item.ZKOMP_ORM_ORAN5
+    };
+
+        for (int i = 0; i < kompOrms.Length; i++)
+        {
+            if (!string.IsNullOrWhiteSpace(kompOrms[i]) && kompOrms[i] != "0" && kompOrms[i] != "000")
+            {
+                result.Add(kompOrms[i] + (string.IsNullOrWhiteSpace(kompOrmsOran[i]) || kompOrmsOran[i] == "0" || kompOrmsOran[i] == "000"
+                    ? ""
+                    : $" %{int.Parse(kompOrmsOran[i])}"));
+            }
+        }
+
+        return string.Join("<br />", result);
+    }
+}

@@ -21,7 +21,8 @@ public class ProformaMaliyetController : Controller
     {
         // Proforma Maliyetler verisini çek
         var proformaMaliyetler = await _context2.ProformaMaliyetler
-            .OrderBy(p => p.IDD)
+              .OrderByDescending(p => p.MalGrubu)
+    .ThenBy(p => p.SiraBenzerKumas)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .AsNoTracking()

@@ -6,7 +6,7 @@ namespace projectakbas.models
 {
     public class mSapGuncelStokVerileri
     {
-        
+
         public string? Kumas { get; set; }
 
         public decimal StokMiktarı { get; set; }
