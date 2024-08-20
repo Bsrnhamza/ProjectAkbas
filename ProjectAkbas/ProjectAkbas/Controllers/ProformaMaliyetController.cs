@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectAkbas.Data;
 using ProjectAkbas.Models;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 public class ProformaMaliyetController : Controller
@@ -19,32 +21,43 @@ public class ProformaMaliyetController : Controller
     }
     public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 150)
     {
-        // Proforma Maliyetler verisini çek
+        // SQL sorgusunu oluştur
+        var sqlQuery = $@"
+        SELECT * 
+        FROM (
+            SELECT *, ROW_NUMBER() OVER (ORDER BY MalGrubu DESC, SiraBenzerKumas ASC) AS RowNum
+            FROM [Akb_Proforma_Test].[dbo].[ProformaMaliyet]
+        ) AS ProformaMaliyetData
+        WHERE RowNum BETWEEN {(pageNumber - 1) * pageSize + 1} AND {pageNumber * pageSize}";
+
+        // Proforma Maliyetler verisini SQL sorgusu ile çek
         var proformaMaliyetler = await _context2.ProformaMaliyetler
-              .OrderByDescending(p => p.MalGrubu)
-    .ThenBy(p => p.SiraBenzerKumas)
-            .Skip((pageNumber - 1) * pageSize)
-            .Take(pageSize)
+            .FromSqlRaw(sqlQuery)
             .AsNoTracking()
             .ToListAsync();
 
         // Kumas Kodlarını listele ve temizle
         var kumasKodlari = proformaMaliyetler
             .Select(p => p.KumasKodu.Trim()) // Trim boşlukları temizler
+            .Distinct()
             .ToList();
 
-        // Verileri sıralı bir şekilde çek
+        // Kumas Kodlarını SQL sorgusuna uygun bir biçimde formatla
+        var kodlarInClause = string.Join(",", kumasKodlari.Select(k => $"'{k}'"));
+
+        // SQL sorgularını doğrudan çalıştırarak veri çekme
         var maraData = await _context3.Maras
-            .Where(m => kumasKodlari.Contains(m.MATNR.Trim()))
+            .FromSqlRaw($"SELECT * FROM aep.MARA WHERE MATNR IN ({kodlarInClause})")
             .ToListAsync();
 
         var sapIthalatVerileri = await _context1.SapIthalatVerileri
-            .Where(si => kumasKodlari.Contains(si.Kumas.Trim()))
+            .FromSqlRaw($"SELECT * FROM SapIthalatVerileri WHERE KUMAS IN ({kodlarInClause})")
             .ToListAsync();
 
         var sapGuncelStokVerileri = await _context1.SapGuncelStokVerileri
-            .Where(sg => kumasKodlari.Contains(sg.Kumas.Trim()))
+            .FromSqlRaw($"SELECT * FROM SapGuncelStokVerileri WHERE KUMAS IN ({kodlarInClause})")
             .ToListAsync();
+        var zmmGrupTs = await _context3.ZmmGrupTs.ToListAsync();
 
         // Tekrar eden anahtarları kontrol et
         var sapGuncelStokVerileriDict = sapGuncelStokVerileri
@@ -58,6 +71,10 @@ public class ProformaMaliyetController : Controller
         var sapIthalatVerileriDict = sapIthalatVerileri
             .GroupBy(si => si.Kumas.Trim())
             .ToDictionary(g => g.Key, g => g.First());
+
+        var zmmGrupDict = zmmGrupTs
+       .GroupBy(zg => zg.zmGrup.Trim())
+       .ToDictionary(g => g.Key, g => g.First().zmGrupAd);
 
         // ProformaMaliyetDto oluştur
         var proformaMaliyetDtos = proformaMaliyetler.Select(p => new ProformaMaliyetDto
@@ -92,7 +109,9 @@ public class ProformaMaliyetController : Controller
             ZMML_EN = maraDataDict.TryGetValue(p.KumasKodu.Trim(), out m) ? m.ZMML_EN : null,
             ZMML_GRM = maraDataDict.TryGetValue(p.KumasKodu.Trim(), out m) ? m.ZMML_GRM : null,
 
-            ZGRUP = maraDataDict.TryGetValue(p.KumasKodu.Trim(), out m) ? m.ZGRUP : null
+            ZGRUP = maraDataDict.TryGetValue(p.KumasKodu.Trim(), out m) ?
+            (zmmGrupDict.TryGetValue(m.ZGRUP.Trim(), out var zmGrupAd) ? zmGrupAd : null)
+            : null
         }).ToList();
 
         // Toplam öğe sayısını hesapla
