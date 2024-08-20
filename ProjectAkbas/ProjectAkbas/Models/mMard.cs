@@ -9,8 +9,7 @@ namespace ProjectAkbas.Models
     {
         [Key]
         [Column("MATNR")]
-        public string mardMATNR { get; set; }
-
+        public string? mardMATNR { get; set; }
         public decimal LABST { get; set; }
     }
 }

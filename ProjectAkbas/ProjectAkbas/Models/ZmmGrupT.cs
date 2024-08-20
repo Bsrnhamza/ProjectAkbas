@@ -2,7 +2,6 @@
 
 namespace ProjectAkbas.Models
 {
-
     [Table("ZMM_GRUP_T", Schema = "aep")]
     public class ZmmGrupT
     {

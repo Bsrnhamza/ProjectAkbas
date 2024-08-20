@@ -4,7 +4,6 @@ using ProjectAkbas.Data;
 using ProjectAkbas.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 public class ProformaMaliyetController : Controller
@@ -19,47 +18,75 @@ public class ProformaMaliyetController : Controller
         _context2 = context2;
         _context3 = context3;
     }
+
     public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 150)
     {
-        // SQL sorgusunu oluştur
+        // PM SQL KODUNU OLUŞTUR
         var sqlQuery = $@"
-        SELECT * 
-        FROM (
-            SELECT *, ROW_NUMBER() OVER (ORDER BY MalGrubu DESC, SiraBenzerKumas ASC) AS RowNum
+        WITH ProformaMaliyetData AS (
+            SELECT 
+                KumasKodu, Qualities, IDD, MalGrubu, SiraBenzerKumas, KumasKalitesi, 
+                HamKumasFiyatiMt, DokumaOrme, YurtDisiDolarMetre, YurticiDolarMetre, 
+                ProfSFYurtici, ProfSFYurtdisiIng, Islem,
+                ROW_NUMBER() OVER (ORDER BY MalGrubu DESC, SiraBenzerKumas ASC) AS RowNum
             FROM [Akb_Proforma_Test].[dbo].[ProformaMaliyet]
-        ) AS ProformaMaliyetData
+        )
+        SELECT 
+            KumasKodu, Qualities, IDD, MalGrubu, SiraBenzerKumas, KumasKalitesi, 
+            HamKumasFiyatiMt, DokumaOrme, YurtDisiDolarMetre, YurticiDolarMetre, 
+            ProfSFYurtici, ProfSFYurtdisiIng, Islem
+        FROM ProformaMaliyetData
         WHERE RowNum BETWEEN {(pageNumber - 1) * pageSize + 1} AND {pageNumber * pageSize}";
 
-        // Proforma Maliyetler verisini SQL sorgusu ile çek
+        // PM SORGUSUNU SQL ÇEK 
         var proformaMaliyetler = await _context2.ProformaMaliyetler
             .FromSqlRaw(sqlQuery)
             .AsNoTracking()
             .ToListAsync();
 
-        // Kumas Kodlarını listele ve temizle
+        // KumasKod Listele
         var kumasKodlari = proformaMaliyetler
-            .Select(p => p.KumasKodu.Trim()) // Trim boşlukları temizler
+            .Select(p => p.KumasKodu.Trim())
             .Distinct()
             .ToList();
 
-        // Kumas Kodlarını SQL sorgusuna uygun bir biçimde formatla
+        // KK sorgusunu çevir
         var kodlarInClause = string.Join(",", kumasKodlari.Select(k => $"'{k}'"));
 
-        // SQL sorgularını doğrudan çalıştırarak veri çekme
+        // Mara Data sorgusu
         var maraData = await _context3.Maras
-            .FromSqlRaw($"SELECT * FROM aep.MARA WHERE MATNR IN ({kodlarInClause})")
+            .FromSqlRaw($@"
+            SELECT 
+                MATNR, ZKOMP_ORM1, ZKOMP_ORM_ORAN1, ZKOMP_ORM2, ZKOMP_ORM_ORAN2, 
+                ZKOMP_ORM3, ZKOMP_ORM_ORAN3, ZKOMP_ORM4, ZKOMP_ORM_ORAN4, ZKOMP_ORM5,ZKOMP_ORM_ORAN5,
+                ZMML_EN, ZMML_GRM, ZGRUP
+            FROM aep.MARA
+            WHERE MATNR IN ({kodlarInClause})")
             .ToListAsync();
 
+        // SIV sorgusu
         var sapIthalatVerileri = await _context1.SapIthalatVerileri
-            .FromSqlRaw($"SELECT * FROM SapIthalatVerileri WHERE KUMAS IN ({kodlarInClause})")
+            .FromSqlRaw($@"
+            SELECT 
+                KUMAS, Sipariste, Antrepoda
+            FROM SapIthalatVerileri
+            WHERE KUMAS IN ({kodlarInClause})")
             .ToListAsync();
 
+        // SGSV sorgusu
         var sapGuncelStokVerileri = await _context1.SapGuncelStokVerileri
-            .FromSqlRaw($"SELECT * FROM SapGuncelStokVerileri WHERE KUMAS IN ({kodlarInClause})")
+            .FromSqlRaw($@"
+            SELECT 
+                KUMAS, StokMiktarı
+            FROM SapGuncelStokVerileri
+            WHERE KUMAS IN ({kodlarInClause})")
             .ToListAsync();
-        var zmmGrupTs = await _context3.ZmmGrupTs.ToListAsync();
 
-        // Tekrar eden anahtarları kontrol et
+        // ZGTS sorgusu
+        var zmmGrupTs = await _context3.ZmmGrupTs
+            .ToListAsync();
+
+        // Anahtar Kontrol
         var sapGuncelStokVerileriDict = sapGuncelStokVerileri
             .GroupBy(sg => sg.Kumas.Trim())
             .ToDictionary(g => g.Key, g => g.First());
@@ -73,10 +100,10 @@ public class ProformaMaliyetController : Controller
             .ToDictionary(g => g.Key, g => g.First());
 
         var zmmGrupDict = zmmGrupTs
-       .GroupBy(zg => zg.zmGrup.Trim())
-       .ToDictionary(g => g.Key, g => g.First().zmGrupAd);
+            .GroupBy(zg => zg.zmGrup.Trim())
+            .ToDictionary(g => g.Key, g => g.First().zmGrupAdiEn);
 
-        // ProformaMaliyetDto oluştur
+        // Dto oluştur
         var proformaMaliyetDtos = proformaMaliyetler.Select(p => new ProformaMaliyetDto
         {
             Qualities = p.Qualities,
@@ -110,14 +137,12 @@ public class ProformaMaliyetController : Controller
             ZMML_GRM = maraDataDict.TryGetValue(p.KumasKodu.Trim(), out m) ? m.ZMML_GRM : null,
 
             ZGRUP = maraDataDict.TryGetValue(p.KumasKodu.Trim(), out m) ?
-            (zmmGrupDict.TryGetValue(m.ZGRUP.Trim(), out var zmGrupAd) ? zmGrupAd : null)
+            (zmmGrupDict.TryGetValue(m.ZGRUP.Trim(), out var zmGrupAdiEn) ? zmGrupAdiEn : null)
             : null
         }).ToList();
 
-        // Toplam öğe sayısını hesapla
+        // öğre sayısıın hesapla
         var totalItems = await _context2.ProformaMaliyetler.CountAsync();
-
-        // ViewModel oluştur ve gönder
         var viewModelForRendering = new ProformaMaliyetViewModel
         {
             ProformaMaliyetler = proformaMaliyetDtos,
@@ -131,5 +156,4 @@ public class ProformaMaliyetController : Controller
 
         return View(viewModelForRendering);
     }
-
 }
