@@ -11,12 +11,16 @@ namespace ProjectAkbas.Data
         }
 
         public DbSet<mProformaMaliyet> ProformaMaliyetler { get; set; }
+        public DbSet<mUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<mProformaMaliyet>()
-              .ToTable("ProformaMaliyet") // Tablo adının doğru olduğundan emin olun
-        .HasKey(p => p.IDD); // IDD'yi birincil anahtar olarak belirleyin
+              .ToTable("ProformaMaliyet") 
+        .HasKey(p => p.IDD);
+            modelBuilder.Entity<mUser>()
+            .ToTable("Users")
+      .HasKey(p => p.Id);
         }
     }
 }

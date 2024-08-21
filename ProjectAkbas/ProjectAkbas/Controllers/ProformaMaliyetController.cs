@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectAkbas.Data;
 using ProjectAkbas.Models;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-
+[Authorize(Roles = "Admin")]
 public class ProformaMaliyetController : Controller
 {
     private readonly ApplicationDbContext1 _context1;

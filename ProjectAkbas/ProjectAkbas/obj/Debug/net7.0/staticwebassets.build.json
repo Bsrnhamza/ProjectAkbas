@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UHbUVNbpxEu73RXD0JxCfJwRdzSN30FN0GnWvLwUZjs=",
+  "Hash": "4M9DXbzl65e31Y+NLaGu48H/2LXYj5vDAN18HO00lC4=",
   "Source": "ProjectAkbas",
   "BasePath": "_content/ProjectAkbas",
   "Mode": "Default",
@@ -797,6 +797,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\ProjectAkbas.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\css\\login.css",
+      "SourceId": "ProjectAkbas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
+      "BasePath": "_content/ProjectAkbas",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\css\\site.css",

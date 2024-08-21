@@ -181,6 +181,10 @@
       "PackagePath": "staticwebassets\\ProjectAkbas.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
       "Id": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
