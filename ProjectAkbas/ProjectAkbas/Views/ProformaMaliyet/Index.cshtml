@@ -1,4 +1,5 @@
-﻿@using ProjectAkbas.Models
+﻿@using Azure.Core;
+@using ProjectAkbas.Models
 @model ProformaMaliyetViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -40,12 +41,6 @@
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
-    thead tr:nth-child(2) th {
-        top: 105px;
-        z-index: 5;
-        box-shadow: none; 
-    }
-
     .table th, .table td {
         background-color: #fff;
     }
@@ -61,8 +56,38 @@
     .qualities-n {
         background-color: rgba(144, 238, 144, 0.25);
     }
+</style>
 
-</style>@* CSS KODLARIM*@
+<form method="get" action="@Url.Action("Index")">
+    <div class="form-check">
+        <input type="checkbox" name="filter" value="Main" id="mainFilter" @(Context.Request.Query["filter"].ToString().Contains("Main") ? "checked" : "") />
+        <label for="mainFilter">Main</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="filter" value="Archive" id="archiveFilter" @(Context.Request.Query["filter"].ToString().Contains("Archive") ? "checked" : "") />
+        <label for="archiveFilter">Archive</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="dokumaOrmeFilter" value="Dokuma" id="dokumaFilter" @(Context.Request.Query["dokumaOrmeFilter"].ToString().Contains("Dokuma") ? "checked" : "") />
+        <label for="dokumaFilter">Dokuma</label>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="dokumaOrmeFilter" value="Orme" id="ormeFilter" @(Context.Request.Query["dokumaOrmeFilter"].ToString().Contains("Orme") ? "checked" : "") />
+        <label for="ormeFilter">Orme</label>
+    </div>
+
+    <!-- MalGrubu Filter -->
+    <div class="form-check">
+        @foreach (var malGrubu in new[] { "Viscose", "Rayon", "Rayon Signart", "Cotton", "Nylon", "Polyester", "Pes Double", "Tencel", "Modal", "Linen", "Jacquard", "Mix"})
+        {
+            <input type="checkbox" name="malGrubuFilter" value="@malGrubu" id="@malGrubu" @(Context.Request.Query["malGrubuFilter"].ToString().Contains(malGrubu) ? "checked" : "") />
+            <label for="@malGrubu">@malGrubu</label>
+        }
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Apply Filter</button>
+</form>
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -88,13 +113,18 @@
             <th rowspan="2">LABST</th>
         </tr>
         <tr>
-            @for (int i = 0; i < 4; i++)
-            {
-                <br />
-                <th>DYEING</th>
-                <th>ROTARY</th>
-                <th>DIGITAL</th>
-            }
+            <th>DYEING</th>
+            <th>ROTARY</th>
+            <th>DIGITAL</th>
+            <th>DYEING</th>
+            <th>ROTARY</th>
+            <th>DIGITAL</th>
+            <th>DYEING</th>
+            <th>ROTARY</th>
+            <th>DIGITAL</th>
+            <th>DYEING</th>
+            <th>ROTARY</th>
+            <th>DIGITAL</th>
         </tr>
     </thead>
 
@@ -172,37 +202,44 @@
 
 <div class="d-flex justify-content-center mt-4">
     <ul class="pagination">
-        @if (Model.PagingInfo.CurrentPage > 4)
+        @if (Model.PagingInfo.CurrentPage > 1)
+        {
+            <li class="page-item @(Model.PagingInfo.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = 1, filter =Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">First</a>
+            </li>
+        }
+
+        @if (Model.PagingInfo.CurrentPage > 1)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { pageNumber = 1 })">1</a>
-            </li>
-            <li class="page-item disabled">
-                <span class="page-link">...</span>
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.CurrentPage - 1, filter = Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">Previous</a>
             </li>
         }
 
         @for (int i = Math.Max(1, Model.PagingInfo.CurrentPage - 2); i <= Math.Min(Model.PagingInfo.TotalPages, Model.PagingInfo.CurrentPage + 2); i++)
         {
             <li class="page-item @(Model.PagingInfo.CurrentPage == i ? "active" : "")">
-                <a class="page-link" href="@Url.Action("Index", new { pageNumber = i })">@i</a>
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = i, filter = Context.Request.Query["filter"], malGrubuFilter =Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">@i</a>
             </li>
         }
 
-        @if (Model.PagingInfo.CurrentPage < Model.PagingInfo.TotalPages - 3)
+        @if (Model.PagingInfo.CurrentPage < Model.PagingInfo.TotalPages)
         {
-            <li class="page-item disabled">
-                <span class="page-link">...</span>
-            </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.TotalPages })">@Model.PagingInfo.TotalPages</a>
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.CurrentPage + 1, filter =Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">Next</a>
+            </li>
+        }
+
+        @if (Model.PagingInfo.CurrentPage < Model.PagingInfo.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.TotalPages, filter = Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">Last</a>
             </li>
         }
     </ul>
 </div>
 
 @functions {
-    //DİNLEYİCİLER
     private string GetMalGrubuColor(string malGrubu)
     {
         return malGrubu switch
@@ -216,6 +253,7 @@
             "Linen" => "rgba(173, 216, 230, 0.5)",
             "Jacquard" => "rgba(128, 128, 128, 0.5)",
             "Mix" or "Yarn Dyed" => "rgba(211, 211, 211, 0.5)",
+            "" => "rgba(0,0,0)",
             _ => "transparent"
         };
     }
@@ -225,7 +263,7 @@
         return qualities switch
         {
             "M" => "rgba(173, 216, 230, 0.25)",
-            "A" or "S" => "rgba(255, 255, 180, 0.25)",
+            "A" or "S" or "" => "rgba(255, 255, 180, 0.25)",
             "N" => "rgba(144, 238, 144, 0.25)",
             _ => "transparent"
         };
@@ -237,19 +275,19 @@
 
         var kompOrms = new[]
         {
-        item.ZKOMP_ORM1,
-        item.ZKOMP_ORM2,
-        item.ZKOMP_ORM3,
-        item.ZKOMP_ORM4,
-        item.ZKOMP_ORM5
+            item.ZKOMP_ORM1,
+            item.ZKOMP_ORM2,
+            item.ZKOMP_ORM3,
+            item.ZKOMP_ORM4,
+            item.ZKOMP_ORM5
     };
         var kompOrmsOran = new[]
         {
-        item.ZKOMP_ORM_ORAN1,
-        item.ZKOMP_ORM_ORAN2,
-        item.ZKOMP_ORM_ORAN3,
-        item.ZKOMP_ORM_ORAN4,
-        item.ZKOMP_ORM_ORAN5
+            item.ZKOMP_ORM_ORAN1,
+            item.ZKOMP_ORM_ORAN2,
+            item.ZKOMP_ORM_ORAN3,
+            item.ZKOMP_ORM_ORAN4,
+            item.ZKOMP_ORM_ORAN5
     };
 
         for (int i = 0; i < kompOrms.Length; i++)
@@ -265,5 +303,4 @@
         }
         return string.Join("<br />", result);
     }
-
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4M9DXbzl65e31Y+NLaGu48H/2LXYj5vDAN18HO00lC4=",
+  "Hash": "LhtSPqY39OLpfx19TSGjhQ5/Xb5m3KLEsc8wsA2geTk=",
   "Source": "ProjectAkbas",
   "BasePath": "_content/ProjectAkbas",
   "Mode": "Default",
@@ -901,23 +901,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -933,23 +916,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
@@ -969,23 +935,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1001,23 +950,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
@@ -1037,23 +969,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1069,23 +984,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
@@ -1105,23 +1003,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1137,23 +1018,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
@@ -1173,23 +1037,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1205,23 +1052,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
@@ -1241,23 +1071,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1273,23 +1086,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
@@ -1309,23 +1105,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1341,23 +1120,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
@@ -1377,23 +1139,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1409,23 +1154,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
@@ -1445,23 +1173,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1477,23 +1188,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
@@ -1513,23 +1207,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1545,23 +1222,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
@@ -1581,23 +1241,6 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
-    },
-    {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "ProjectAkbas",
       "SourceType": "Discovered",
@@ -1613,23 +1256,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -1681,23 +1307,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
-    },
-    {
-      "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "SourceId": "ProjectAkbas",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\",
-      "BasePath": "_content/ProjectAkbas",
-      "RelativePath": "lib/jquery/dist/jquery.min.map",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
       "Identity": "C:\\Users\\hp\\source\\repos\\ProjectAkbas\\ProjectAkbas\\ProjectAkbas\\wwwroot\\lib\\jquery\\LICENSE.txt",

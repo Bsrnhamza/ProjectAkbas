@@ -4,5 +4,6 @@
     {
         public List<ProformaMaliyetDto>? ProformaMaliyetler { get; set; }
         public PagingInfo PagingInfo { get; set; }
+        public string[] MalGrubuFilter { get; set; }
     }
 }
