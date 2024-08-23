@@ -20,22 +20,22 @@ public class ProformaMaliyetController : Controller
         _context3 = context3;
     }
 
-    public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 150, string[] filter = null, string[] malGrubuFilter = null, string[] dokumaOrmeFilter = null)
+    public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 150, string[] filter = null, string[] malGrubuFilter = null, string[] dokumaOrmeFilter = null, string[] sustainableFilter = null, string[] airflowFilter = null, string[] yarndyedFilter = null)
     {
         // SQL sorgusunu oluştur
         var sqlQuery = $@"
         WITH ProformaMaliyetData AS (
             SELECT 
-                KumasKodu, Qualities, IDD, MalGrubu, SiraBenzerKumas, KumasKalitesi, 
-                HamKumasFiyatiMt, DokumaOrme, YurtDisiDolarMetre, YurticiDolarMetre, 
-                ProfSFYurtici, ProfSFYurtdisiIng, Islem,QualitiesGroup,
-                ROW_NUMBER() OVER (ORDER BY MalGrubu DESC, SiraBenzerKumas ASC) AS RowNum
+               KumasKodu, Qualities, IDD, MalGrubu, SiraBenzerKumas, KumasKalitesi, 
+        HamKumasFiyatiMt, DokumaOrme, YurtDisiDolarMetre, YurticiDolarMetre, 
+        ProfSFYurtici, ProfSFYurtdisiIng, Islem, QualitiesGroup, Sustainable,YarnDyed,
+        ROW_NUMBER() OVER (ORDER BY MalGrubu DESC, SiraBenzerKumas ASC) AS RowNum
             FROM [Akb_Proforma_Test].[dbo].[ProformaMaliyet]
         )
         SELECT 
-            KumasKodu, Qualities, IDD, MalGrubu, SiraBenzerKumas, KumasKalitesi, 
-            HamKumasFiyatiMt, DokumaOrme, YurtDisiDolarMetre, YurticiDolarMetre, 
-            ProfSFYurtici, ProfSFYurtdisiIng, Islem ,QualitiesGroup
+             KumasKodu, Qualities, IDD, MalGrubu, SiraBenzerKumas, KumasKalitesi, 
+    HamKumasFiyatiMt, DokumaOrme, YurtDisiDolarMetre, YurticiDolarMetre, 
+    ProfSFYurtici, ProfSFYurtdisiIng, Islem, QualitiesGroup, Sustainable,YarnDyed
         FROM ProformaMaliyetData
         WHERE RowNum BETWEEN {(pageNumber - 1) * pageSize + 1} AND {pageNumber * pageSize}";
 
@@ -75,7 +75,18 @@ public class ProformaMaliyetController : Controller
         {
             filteredQuery = filteredQuery.Where(p => malGrubuFilter.Contains(p.MalGrubu));
         }
-
+        if (sustainableFilter != null && sustainableFilter.Contains("X"))
+        {
+            filteredQuery = filteredQuery.Where(p => p.Sustainable == "X");
+        }
+        if (airflowFilter != null && airflowFilter.Contains("AIRFLOW"))
+        {
+            filteredQuery = filteredQuery.Where(p => p.QualitiesGroup == "AIRFLOW");
+        }
+        if (yarndyedFilter != null && yarndyedFilter.Contains("X"))
+        {
+            filteredQuery = filteredQuery.Where(p => p.YarnDyed == "X");
+        }
         var filteredProformaMaliyetler = await filteredQuery
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
@@ -155,8 +166,11 @@ public class ProformaMaliyetController : Controller
             YurticiDolarMetre = p.YurticiDolarMetre,
             ProfSFYurtici = p.ProfSFYurtici,
             ProfSFYurtdisiIng = p.ProfSFYurtdisiIng,
+
             Islem = p.Islem,
             QualitiesGroup = p.QualitiesGroup,
+            Sustainable = p.Sustainable,
+            YarnDyed = p.YarnDyed,
 
             Sipariste = sapIthalatVerileriDict.TryGetValue(p.KumasKodu.Trim(), out var si) ? si.Sipariste : null,
             Antrepoda = sapIthalatVerileriDict.TryGetValue(p.KumasKodu.Trim(), out si) ? si.Antrepoda : null,
@@ -196,6 +210,9 @@ public class ProformaMaliyetController : Controller
         ViewData["Filter"] = filter;
         ViewData["MalGrubuFilter"] = malGrubuFilter;
         ViewData["dokumaOrmeFilter"] = dokumaOrmeFilter;
+        ViewData["SustainableFilter"] = sustainableFilter;
+        ViewData["AirflowFilter"] = airflowFilter;
+        ViewData["yarndyedFilter"] = yarndyedFilter;
 
         return View(viewModelForRendering);
     }

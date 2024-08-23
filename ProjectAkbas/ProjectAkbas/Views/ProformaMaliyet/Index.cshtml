@@ -32,14 +32,39 @@
         padding: 8px;
     }
 
-    th {
-        background-color: #ffffff;
+    thead tr:first-child th {
         position: sticky;
-        top: 50px;
-        z-index: 10;
-        border-bottom: 2px solid #dee2e6;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        top: 56px; /* Navbar'ın yüksekliği */
+        background-color: #fff; /* Üst başlık arka plan rengi */
+        z-index: 10; /* Üstte kalmasını sağlar */
     }
+
+    thead tr:nth-child(2) th {
+        position: sticky;
+        top: 94px; /* Üst başlık yüksekliği + Navbar'ın yüksekliği (38px + 56px) */
+        background-color: #fff; /* Alt başlık arka plan rengi */
+        z-index: 9; /* Üst başlık altında kalmasını sağlar */
+    }
+
+    thead th {
+        font-size: 10px; /* Başlık hücrelerinin metin boyutu */
+        background-color: #fff;
+        position: sticky;
+        top: 56px;
+        z-index: 10;
+    }
+
+    tbody td {
+        font-size: 12px; /* Veri hücrelerinin metin boyutu */
+
+        .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 8px;
+        white-space: nowrap; /* Hücrelerde taşmayı önler */
+    }
+
+
 
     .table th, .table td {
         background-color: #fff;
@@ -58,35 +83,6 @@
     }
 </style>
 
-<form method="get" action="@Url.Action("Index")">
-    <div class="form-check">
-        <input type="checkbox" name="filter" value="Main" id="mainFilter" @(Context.Request.Query["filter"].ToString().Contains("Main") ? "checked" : "") />
-        <label for="mainFilter">Main</label>
-    </div>
-    <div class="form-check">
-        <input type="checkbox" name="filter" value="Archive" id="archiveFilter" @(Context.Request.Query["filter"].ToString().Contains("Archive") ? "checked" : "") />
-        <label for="archiveFilter">Archive</label>
-    </div>
-    <div class="form-check">
-        <input type="checkbox" name="dokumaOrmeFilter" value="Dokuma" id="dokumaFilter" @(Context.Request.Query["dokumaOrmeFilter"].ToString().Contains("Dokuma") ? "checked" : "") />
-        <label for="dokumaFilter">Dokuma</label>
-    </div>
-    <div class="form-check">
-        <input type="checkbox" name="dokumaOrmeFilter" value="Orme" id="ormeFilter" @(Context.Request.Query["dokumaOrmeFilter"].ToString().Contains("Orme") ? "checked" : "") />
-        <label for="ormeFilter">Orme</label>
-    </div>
-
-    <!-- MalGrubu Filter -->
-    <div class="form-check">
-        @foreach (var malGrubu in new[] { "Viscose", "Rayon", "Rayon Signart", "Cotton", "Nylon", "Polyester", "Pes Double", "Tencel", "Modal", "Linen", "Jacquard", "Mix"})
-        {
-            <input type="checkbox" name="malGrubuFilter" value="@malGrubu" id="@malGrubu" @(Context.Request.Query["malGrubuFilter"].ToString().Contains(malGrubu) ? "checked" : "") />
-            <label for="@malGrubu">@malGrubu</label>
-        }
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Apply Filter</button>
-</form>
 
 <table class="table table-hover">
     <thead>
@@ -111,6 +107,9 @@
             <th rowspan="2">Zgroup</th>
             <th rowspan="2">Antrepoda</th>
             <th rowspan="2">LABST</th>
+            <th rowspan="2">SS</th>
+            <th rowspan="2">QB</th>
+            <th rowspan="2">Unit</th>
         </tr>
         <tr>
             <th>DYEING</th>
@@ -134,6 +133,7 @@
             var firstItem = group.First();
             var malGrubuColor = GetMalGrubuColor(firstItem.MalGrubu);
             var qualitiesColor = GetQualitiesColor(firstItem.Qualities);
+            var unit = firstItem.DokumaOrme == "ÖRME" ? "$/kg" : firstItem.DokumaOrme == "DOKUMA" ? "$/mt" : "";
 
             <tr>
                 <td style="background-color: @malGrubuColor;">@firstItem.MalGrubu</td>
@@ -195,6 +195,9 @@
                 <td style="background-color: @qualitiesColor;">@firstItem.ZGRUP</td>
                 <td style="background-color: @qualitiesColor;">@firstItem.Antrepoda</td>
                 <td style="background-color: @qualitiesColor;">@firstItem.LABST</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.Sustainable</td>
+                <td style="background-color: @qualitiesColor;">@firstItem.QualitiesGroup</td>
+                <td style="background-color: @qualitiesColor;">@unit</td>
             </tr>
         }
     </tbody>
@@ -205,35 +208,35 @@
         @if (Model.PagingInfo.CurrentPage > 1)
         {
             <li class="page-item @(Model.PagingInfo.CurrentPage == 1 ? "disabled" : "")">
-                <a class="page-link" href="@Url.Action("Index", new { pageNumber = 1, filter =Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">First</a>
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = 1, filter =Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"] , sustainableFilter = Context.Request.Query["sustainableFilter"], airflowFilter =Context.Request.Query["airflowFilter"], yarndyedFilter =Context.Request.Query["yarndyedFilter"]})">First</a>
             </li>
         }
 
         @if (Model.PagingInfo.CurrentPage > 1)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.CurrentPage - 1, filter = Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">Previous</a>
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.CurrentPage - 1, filter = Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"] , sustainableFilter = Context.Request.Query["sustainableFilter"], airflowFilter =Context.Request.Query["airflowFilter"], yarndyedFilter =Context.Request.Query["yarndyedFilter"]})">Previous</a>
             </li>
         }
 
         @for (int i = Math.Max(1, Model.PagingInfo.CurrentPage - 2); i <= Math.Min(Model.PagingInfo.TotalPages, Model.PagingInfo.CurrentPage + 2); i++)
         {
             <li class="page-item @(Model.PagingInfo.CurrentPage == i ? "active" : "")">
-                <a class="page-link" href="@Url.Action("Index", new { pageNumber = i, filter = Context.Request.Query["filter"], malGrubuFilter =Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">@i</a>
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = i, filter = Context.Request.Query["filter"], malGrubuFilter =Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"] , sustainableFilter = Context.Request.Query["sustainableFilter"], airflowFilter =Context.Request.Query["airflowFilter"], yarndyedFilter =Context.Request.Query["yarndyedFilter"]})">@i</a>
             </li>
         }
 
         @if (Model.PagingInfo.CurrentPage < Model.PagingInfo.TotalPages)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.CurrentPage + 1, filter =Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">Next</a>
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.CurrentPage + 1, filter =Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"] , sustainableFilter = Context.Request.Query["sustainableFilter"], airflowFilter =Context.Request.Query["airflowFilter"], yarndyedFilter =Context.Request.Query["yarndyedFilter"]})">Next</a>
             </li>
         }
 
         @if (Model.PagingInfo.CurrentPage < Model.PagingInfo.TotalPages)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.TotalPages, filter = Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"]})">Last</a>
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PagingInfo.TotalPages, filter = Context.Request.Query["filter"], malGrubuFilter = Context.Request.Query["malGrubuFilter"], dokumaOrmeFilter = Context.Request.Query["dokumaOrmeFilter"] , sustainableFilter = Context.Request.Query["sustainableFilter"], airflowFilter =Context.Request.Query["airflowFilter"], yarndyedFilter =Context.Request.Query["yarndyedFilter"]})">Last</a>
             </li>
         }
     </ul>

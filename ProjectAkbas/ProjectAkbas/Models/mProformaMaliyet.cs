@@ -19,6 +19,9 @@ namespace ProjectAkbas.Models
         public decimal? ProfSFYurtdisiIng { get; set; }
         public decimal? YurticiDolarMetre { get; set; }
         public string? QualitiesGroup { get; set; }
+        public string? Sustainable { get; set; }
+        public string? YarnDyed { get; set; }
+
 
     }
 }

@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         body {
-            padding-top: 56px; /* yüksekliği  */
-            background-color: #f8f9fa; /* Genel Arka */
+            padding-top: 56px; /* Navbar yüksekliği */
+            background-color: #f8f9fa; /* Genel Arka Plan */
         }
 
         .navbar {
@@ -26,6 +26,103 @@
             .offcanvas-header .btn-close {
                 font-size: 1.5rem; /* Simge boyutu */
             }
+
+        .form-check-input {
+            margin-right: 10px; /* Checkbox ve etiket arasındaki boşluk */
+        }
+
+        .form-check-label {
+            margin-bottom: 0; /* Etiket altındaki boşluğu kaldırır */
+        }
+
+        .list-group-item {
+            display: flex;
+            align-items: center; /* Checkbox ve etiket hizalaması */
+        }
+
+            .list-group-item input {
+                margin-right: 10px; /* Checkbox ve etiket arasındaki boşluk */
+            }
+
+            .list-group-item ul {
+                padding-left: 20px; /* İç içe liste için sol boşluk */
+            }
+
+        .btn-primary {
+            margin-top: 10px; /* Buton üst boşluğu */
+        }
+
+        .list-group-item-main {
+            background-color: rgba(173, 216, 230, 0.25);
+        }
+
+        .list-group-item-archive {
+            background-color: rgba(255, 255, 224, 0.25);
+        }
+
+        .list-group-item-new {
+            background-color: rgba(144, 238, 144, 0.25);
+        }
+
+        .list-group-item-viscose {
+            background-color: rgba(255, 165, 0, 0.5); /* Turuncu tonları */
+        }
+
+        .list-group-item-rayon {
+            background-color: rgba(0, 128, 0, 0.5); /* Yeşil tonları */
+        }
+
+        .list-group-item-rayon-signart {
+            background-color: rgba(0, 128, 0, 0.5); /* Yeşil tonları */
+        }
+
+        .list-group-item-cotton {
+            background-color: rgba(128, 0, 128, 0.5); /* Mor tonları */
+        }
+
+        .list-group-item-nylon {
+            background-color: rgba(255, 255, 0, 0.5); /* Sarı tonları */
+        }
+
+        .list-group-item-polyester {
+            background-color: rgba(255, 0, 0, 0.5); /* Kırmızı tonları */
+        }
+
+        .list-group-item-pes-double {
+            background-color: rgba(255, 0, 0, 0.5); /* Kırmızı tonları */
+        }
+
+        .list-group-item-tencel {
+            background-color: rgba(0, 0, 255, 0.5); /* Mavi tonları */
+        }
+
+        .list-group-item-modal {
+            background-color: rgba(0, 0, 255, 0.5); /* Mavi tonları */
+        }
+
+        .list-group-item-linen {
+            background-color: rgba(173, 216, 230, 0.5); /* Açık mavi tonları */
+        }
+
+        .list-group-item-jacquard {
+            background-color: rgba(128, 128, 128, 0.5); /* Gri tonları */
+        }
+
+        .list-group-item-mix {
+            background-color: rgba(211, 211, 211, 0.5); /* Açık gri tonları */
+        }
+
+        .list-group-item-yarndyed {
+            background-color: rgba(211, 211, 211, 0.5); /* Açık gri tonları */
+        }
+
+        .list-group-item-airflow {
+            background-color: rgba(178, 255, 102, 0.5); /* Açık gri tonları */
+        }
+
+        .list-group-item-sustainable {
+            background-color: rgba(178, 255, 102, 0.5); /* Açık gri tonları */
+        }
     </style>
 </head>
 <body>
@@ -42,128 +139,108 @@
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
         <div class="offcanvas-header">
+            <h5 id="offcanvasMenuLabel">Filters</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <h5>QUALITIES</h5>
-            <ul class="list-group mt-3">
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="mainQualities">
-                    <label class="form-check-label" for="mainQualities">Main Qualities</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="archiveQualities">
-                    <label class="form-check-label" for="archiveQualities">Archive Qualities</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="newQualities">
-                    <label class="form-check-label" for="newQualities">New Qualities</label>
-                </li>
-            </ul>
+            <form method="get" action="@Url.Action("Index")">
 
-            <h7 class="mt-4">Qualities Group</h7>
-            <ul class="list-group mt-3">
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="viscoes">
-                    <label class="form-check-label" for="viscoes">Viscoes</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="rayon">
-                    <label class="form-check-label" for="rayon">Rayon</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="rynSignart">
-                    <label class="form-check-label" for="rynSignart">Ryn Signart</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="cotton">
-                    <label class="form-check-label" for="cotton">Cotton</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="nylon">
-                    <label class="form-check-label" for="nylon">Nylon</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="polyester">
-                    <label class="form-check-label" for="polyester">Polyester</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="pesDouble">
-                    <label class="form-check-label" for="pesDouble">Pes Double</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="tencel">
-                    <label class="form-check-label" for="tencel">Tencel</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="modal">
-                    <label class="form-check-label" for="modal">Modal</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="linen">
-                    <label class="form-check-label" for="linen">Linen</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="jacquard">
-                    <label class="form-check-label" for="jacquard">Jacquard</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="mix">
-                    <label class="form-check-label" for="mix">Mix</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="yarnDyed">
-                    <label class="form-check-label" for="yarnDyed">Yarn Dyed</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="airflow">
-                    <label class="form-check-label" for="airflow">Airflow</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="sustainable">
-                    <label class="form-check-label" for="sustainable">Sustainable</label>
-                </li>
-            </ul>
-            <h5>Price List</h5>
-            <ul class="list-group mt-3">
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="general">
-                    <label class="form-check-label" for="general">General</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="confection">
-                    <label class="form-check-label" for="confection">Confection</label>
-                </li>
-            </ul>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-main">
+                        <input type="checkbox" name="filter" value="Main" id="mainFilter" @(Context.Request.Query["filter"].ToString().Contains("Main") ? "checked" : "") />
+                        <label for="mainFilter" class="form-check-label">Main</label>
+                    </li>
+                    <li class="list-group-item list-group-item-archive">
+                        <input type="checkbox" name="filter" value="Archive" id="archiveFilter" @(Context.Request.Query["filter"].ToString().Contains("Archive") ? "checked" : "") />
+                        <label for="archiveFilter" class="form-check-label">Archive</label>
+                    </li>
+                    <li class="list-group-item list-group-item-new">
+                        <input type="checkbox" name="filter" value="New" id="newFilter" @(Context.Request.Query["filter"].ToString().Contains("New") ? "checked" : "") />
+                        <label for="newFilter" class="form-check-label">New</label>
+                    </li>
+                </ul>
+                <br />
 
-            <h5 class="mt-4">Sale Price</h5>
-            <ul class="list-group mt-3">
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="domestic">
-                    <label class="form-check-label" for="domestic">Domestic</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="export">
-                    <label class="form-check-label" for="export">Export</label>
-                </li>
-            </ul>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-viscose">
+                        <input type="checkbox" name="malGrubuFilter" value="Viscose" id="Viscose" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Viscose") ? "checked" : "") />
+                        <label for="Viscose" class="form-check-label">Viscose</label>
+                    </li>
+                    <li class="list-group-item list-group-item-rayon">
+                        <input type="checkbox" name="malGrubuFilter" value="Rayon" id="Rayon" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Rayon") ? "checked" : "") />
+                        <label for="Rayon" class="form-check-label">Rayon</label>
+                    </li>
+                    <li class="list-group-item list-group-item-rayon-signart">
+                        <input type="checkbox" name="malGrubuFilter" value="Rayon Signart" id="Rayon Signart" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Rayon Signart") ? "checked" : "") />
+                        <label for="Rayon Signart" class="form-check-label">Rayon Signart</label>
+                    </li>
+                    <li class="list-group-item list-group-item-cotton">
+                        <input type="checkbox" name="malGrubuFilter" value="Cotton" id="Cotton" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Cotton") ? "checked" : "") />
+                        <label for="Cotton" class="form-check-label">Cotton</label>
+                    </li>
+                    <li class="list-group-item list-group-item-nylon">
+                        <input type="checkbox" name="malGrubuFilter" value="Nylon" id="Nylon" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Nylon") ? "checked" : "") />
+                        <label for="Nylon" class="form-check-label">Nylon</label>
+                    </li>
+                    <li class="list-group-item list-group-item-polyester">
+                        <input type="checkbox" name="malGrubuFilter" value="Polyester" id="Polyester" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Polyester") ? "checked" : "") />
+                        <label for="Polyester" class="form-check-label">Polyester</label>
+                    </li>
+                    <li class="list-group-item list-group-item-pes-double">
+                        <input type="checkbox" name="malGrubuFilter" value="Pes Double" id="Pes Double" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Pes Double") ? "checked" : "") />
+                        <label for="Pes Double" class="form-check-label">Pes Double</label>
+                    </li>
+                    <li class="list-group-item list-group-item-tencel">
+                        <input type="checkbox" name="malGrubuFilter" value="Tencel" id="Tencel" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Tencel") ? "checked" : "") />
+                        <label for="Tencel" class="form-check-label">Tencel</label>
+                    </li>
+                    <li class="list-group-item list-group-item-modal">
+                        <input type="checkbox" name="malGrubuFilter" value="Modal" id="Modal" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Modal") ? "checked" : "") />
+                        <label for="Modal" class="form-check-label">Modal</label>
+                    </li>
+                    <li class="list-group-item list-group-item-linen">
+                        <input type="checkbox" name="malGrubuFilter" value="Linen" id="Linen" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Linen") ? "checked" : "") />
+                        <label for="Linen" class="form-check-label">Linen</label>
+                    </li>
+                    <li class="list-group-item list-group-item-jacquard">
+                        <input type="checkbox" name="malGrubuFilter" value="Jacquard" id="Jacquard" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Jacquard") ? "checked" : "") />
+                        <label for="Jacquard" class="form-check-label">Jacquard</label>
+                    </li>
+                    <li class="list-group-item list-group-item-mix">
+                        <input type="checkbox" name="malGrubuFilter" value="Mix" id="Mix" @(Context.Request.Query["malGrubuFilter"].ToString().Contains("Mix") ? "checked" : "") />
+                        <label for="Mix" class="form-check-label">Mix</label>
+                    </li>
+                    <li class="list-group-item list-group-item-yarndyed">
+                        <input type="checkbox" name="yarndyedFilter" value="X" id="yarndyedFilter" @(Context.Request.Query["yarndyedFilter"].ToString().Contains("X") ? "checked" : "") />
+                        <label for="yarndyedFilter" class="form-check-label">YarnDyed</label>
+                    </li>
+                    <li class="list-group-item list-group-item-sustainable">
+                        <input type="checkbox" name="sustainableFilter" value="X" id="sustainableFilter" @(Context.Request.Query["sustainableFilter"].ToString().Contains("X") ? "checked" : "") />
+                        <label for="sustainableFilter" class="form-check-label">Sustainable</label>
+                    </li>
+                    <li class="list-group-item list-group-item-airflow">
+                        <input type="checkbox" name="airflowFilter" value="AIRFLOW" id="airflowFilter" @(Context.Request.Query["airflowFilter"].ToString().Contains("AIRFLOW") ? "checked" : "") />
+                        <label for="airflowFilter" class="form-check-label">Airflow</label>
+                    </li>                 
+                </ul>
+                <br />
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <input type="checkbox" name="dokumaOrmeFilter" value="Dokuma" id="dokumaFilter" @(Context.Request.Query["dokumaOrmeFilter"].ToString().Contains("Dokuma") ? "checked" : "") />
+                        <label for="dokumaFilter" class="form-check-label">Dokuma</label>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" name="dokumaOrmeFilter" value="Orme" id="ormeFilter" @(Context.Request.Query["dokumaOrmeFilter"].ToString().Contains("Orme") ? "checked" : "") />
+                        <label for="ormeFilter" class="form-check-label">Orme</label>
 
-            <h5 class="mt-4">Currency</h5>
-            <ul class="list-group mt-3">
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="dollar">
-                    <label class="form-check-label" for="dollar">Dollar</label>
-                </li>
-                <li class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="euro">
-                    <label class="form-check-label" for="euro">Euro</label>
-                </li>
-            </ul>
-
+                    </li>
+                </ul>
+                <button type="submit" class="btn btn-primary mt-3">Filter</button>
+            </form>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mt-4">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
