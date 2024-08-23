@@ -216,4 +216,5 @@ public class ProformaMaliyetController : Controller
 
         return View(viewModelForRendering);
     }
+
 }
